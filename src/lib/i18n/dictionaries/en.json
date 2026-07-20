@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "Papadopoulos Law Office | Civil Law",
+    "description": "Papadopoulos Law Office — specializing in Civil, Contract and Inheritance Law, as well as Real Estate Law in Athens."
+  },
+  "nav": {
+    "brand": "Papadopoulos",
+    "brandFull": "Papadopoulos Law Office",
+    "brandTagline": "Law Office",
+    "links": {
+      "about": "About",
+      "services": "Services",
+      "team": "Team",
+      "contact": "Contact"
+    },
+    "cta": "Book a Consultation"
+  },
+  "footer": {
+    "tagline": "Responsible legal guidance, delivered with expertise and consistency, at every stage of your case.",
+    "linksTitle": "Quick Links",
+    "contactTitle": "Contact Details",
+    "addressLabel": "Address",
+    "address": "28 Akadimias St, 106 71 Athens, Greece",
+    "phoneLabel": "Phone",
+    "phone": "+30 210 3601 234",
+    "emailLabel": "Email",
+    "email": "info@papadopouloslaw.gr",
+    "hoursLabel": "Office Hours",
+    "hours": "Monday – Friday: 09:00 – 17:00",
+    "socialLabel": "Follow us",
+    "rights": "All rights reserved."
+  },
+  "placeholder": {
+    "sectionNotice": "This section's content will be added in Stage 2."
+  }
+}
