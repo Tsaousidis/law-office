@@ -1,24 +1,37 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 
 export function Hero() {
   const { dict } = useLanguage();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20 text-center"
     >
-      <PlaceholderImage
-        src={dict.hero.image}
-        alt=""
-        className="absolute inset-0 -z-20"
-      />
+      <motion.div className="absolute inset-0 -z-20" style={{ y: bgY }}>
+        <PlaceholderImage src={dict.hero.image} alt="" className="h-[120%] w-full" />
+      </motion.div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/95 via-ink/90 to-ink-2/90" />
 
-      <div className="max-w-3xl">
+      <motion.div
+        className="max-w-3xl"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-light">
           {dict.nav.brandTagline}
         </p>
@@ -34,7 +47,7 @@ export function Hero() {
         >
           {dict.nav.cta}
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }

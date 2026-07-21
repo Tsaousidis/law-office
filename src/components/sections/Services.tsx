@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { Reveal } from "@/components/ui/Reveal";
 
 const ICONS = [
   // Αστικό Δίκαιο — scales of justice
@@ -33,7 +34,7 @@ export function Services() {
   return (
     <section id="services" className="bg-cream-2 px-6 py-24 lg:px-10">
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-deep">
             {dict.services.kicker}
           </p>
@@ -41,35 +42,34 @@ export function Services() {
             {dict.services.heading}
           </h2>
           <p className="mt-4 text-base text-charcoal/70">{dict.services.intro}</p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {dict.services.items.map((item, i) => (
-            <div
-              key={item.title}
-              className="rounded-lg border border-ink/8 bg-cream p-8"
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink/5">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="var(--color-gold-deep)"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  {ICONS[i]}
-                </svg>
-              </span>
-              <h3 className="mt-5 font-serif text-xl font-semibold text-ink">
-                {item.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-charcoal/70">
-                {item.description}
-              </p>
-            </div>
+            <Reveal key={item.title} delay={(i % 3) * 0.08}>
+              <div className="group h-full rounded-lg border border-ink/8 bg-cream p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-lg hover:shadow-ink/5">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 transition-colors duration-300 group-hover:bg-gold/15">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="var(--color-gold-deep)"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {ICONS[i]}
+                  </svg>
+                </span>
+                <h3 className="mt-5 font-serif text-xl font-semibold text-ink">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-charcoal/70">
+                  {item.description}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

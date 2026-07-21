@@ -1,26 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { Logo } from "./Logo";
 
 const NAV_ITEMS = ["about", "services", "team", "contact"] as const;
+const SCROLL_THRESHOLD = 60;
 
 export function Navbar() {
   const { locale, setLocale, dict } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-cream/80 backdrop-blur-md">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled
+          ? "border-ink/10 bg-cream/80 backdrop-blur-md"
+          : "border-transparent bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <Logo />
+        <Logo variant={scrolled ? "default" : "inverted"} />
 
         <nav className="hidden items-center gap-8 md:flex">
           {NAV_ITEMS.map((item) => (
             <a
               key={item}
               href={`#${item}`}
-              className="text-sm font-medium text-ink/80 transition-colors hover:text-gold-deep"
+              className={`text-sm font-medium transition-colors ${
+                scrolled
+                  ? "text-ink/80 hover:text-gold-deep"
+                  : "text-cream/85 hover:text-gold-light"
+              }`}
             >
               {dict.nav.links[item]}
             </a>
@@ -28,10 +47,14 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
-          <LanguageToggle locale={locale} onChange={setLocale} />
+          <LanguageToggle locale={locale} onChange={setLocale} scrolled={scrolled} />
           <a
             href="#contact"
-            className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-cream transition-colors hover:bg-gold hover:text-ink"
+            className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
+              scrolled
+                ? "bg-ink text-cream hover:bg-gold hover:text-ink"
+                : "bg-gold text-ink hover:bg-gold-light"
+            }`}
           >
             {dict.nav.cta}
           </a>
@@ -39,7 +62,9 @@ export function Navbar() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-sm text-ink md:hidden"
+          className={`flex h-10 w-10 items-center justify-center rounded-sm transition-colors md:hidden ${
+            scrolled ? "text-ink" : "text-cream"
+          }`}
           aria-label="Menu"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((v) => !v)}
@@ -65,7 +90,7 @@ export function Navbar() {
             </a>
           ))}
           <div className="mt-2 flex items-center justify-between gap-4 px-2">
-            <LanguageToggle locale={locale} onChange={setLocale} />
+            <LanguageToggle locale={locale} onChange={setLocale} scrolled />
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}
@@ -83,12 +108,18 @@ export function Navbar() {
 function LanguageToggle({
   locale,
   onChange,
+  scrolled,
 }: {
   locale: "el" | "en";
   onChange: (locale: "el" | "en") => void;
+  scrolled: boolean;
 }) {
   return (
-    <div className="flex items-center rounded-full border border-ink/15 bg-cream-2/60 p-1 text-xs font-semibold">
+    <div
+      className={`flex items-center rounded-full border p-1 text-xs font-semibold transition-colors ${
+        scrolled ? "border-ink/15 bg-cream-2/60" : "border-cream/30 bg-cream/10"
+      }`}
+    >
       {(["el", "en"] as const).map((l) => (
         <button
           key={l}
@@ -98,7 +129,9 @@ function LanguageToggle({
           className={`rounded-full px-3 py-1.5 uppercase tracking-wide transition-colors ${
             locale === l
               ? "bg-ink text-gold-light"
-              : "text-ink/60 hover:text-ink"
+              : scrolled
+                ? "text-ink/60 hover:text-ink"
+                : "text-cream/70 hover:text-cream"
           }`}
         >
           {l}
