@@ -4,22 +4,31 @@ import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { FloatingOrbs } from "@/components/ui/FloatingOrbs";
 
 export function About() {
   const { dict } = useLanguage();
 
   return (
-    <section id="about" className="mx-auto max-w-6xl px-6 py-24 lg:px-10">
-      <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
-        <Reveal>
+    <section id="about" className="relative mx-auto max-w-6xl px-6 py-24 lg:px-10">
+      <FloatingOrbs
+        orbs={[
+          { size: 220, top: "5%", left: "-5%", tone: "gold" },
+          { size: 160, top: "70%", left: "90%", tone: "gold", delay: 1.5 },
+        ]}
+      />
+
+      <div className="relative grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+        <Reveal direction="left">
           <PlaceholderImage
             src={dict.about.image}
             alt=""
-            className="aspect-[4/5] w-full rounded-lg"
+            kenBurns
+            className="aspect-[4/5] w-full rounded-lg shadow-xl shadow-ink/10"
           />
         </Reveal>
 
-        <Reveal delay={0.1}>
+        <Reveal direction="right" delay={0.1}>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-deep">
             {dict.about.kicker}
           </p>

@@ -2,6 +2,8 @@
 
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { Reveal } from "@/components/ui/Reveal";
+import { TiltCard } from "@/components/ui/TiltCard";
+import { FloatingOrbs } from "@/components/ui/FloatingOrbs";
 
 const ICONS = [
   // Αστικό Δίκαιο — scales of justice
@@ -32,8 +34,15 @@ export function Services() {
   const { dict } = useLanguage();
 
   return (
-    <section id="services" className="bg-cream-2 px-6 py-24 lg:px-10">
-      <div className="mx-auto max-w-6xl">
+    <section id="services" className="relative overflow-hidden bg-cream-2 px-6 py-24 lg:px-10">
+      <FloatingOrbs
+        orbs={[
+          { size: 240, top: "0%", left: "85%", tone: "gold" },
+          { size: 200, top: "80%", left: "5%", tone: "ink", delay: 2 },
+        ]}
+      />
+
+      <div className="relative mx-auto max-w-6xl">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-deep">
             {dict.services.kicker}
@@ -44,11 +53,11 @@ export function Services() {
           <p className="mt-4 text-base text-charcoal/70">{dict.services.intro}</p>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-6 [perspective:1200px] sm:grid-cols-2 lg:grid-cols-3">
           {dict.services.items.map((item, i) => (
-            <Reveal key={item.title} delay={(i % 3) * 0.08}>
-              <div className="group h-full rounded-lg border border-ink/8 bg-cream p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-lg hover:shadow-ink/5">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 transition-colors duration-300 group-hover:bg-gold/15">
+            <Reveal key={item.title} direction="scale" delay={(i % 3) * 0.08}>
+              <TiltCard className="group h-full rounded-lg border border-ink/8 bg-cream p-8 transition-shadow duration-300 hover:border-gold/40 hover:shadow-xl hover:shadow-ink/10">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink/5 transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 group-hover:bg-gold/15">
                   <svg
                     width="24"
                     height="24"
@@ -68,7 +77,7 @@ export function Services() {
                 <p className="mt-3 text-sm leading-relaxed text-charcoal/70">
                   {item.description}
                 </p>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

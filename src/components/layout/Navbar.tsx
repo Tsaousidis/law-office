@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { Logo } from "./Logo";
 
@@ -35,21 +36,28 @@ export function Navbar() {
             <a
               key={item}
               href={`#${item}`}
-              className={`text-sm font-medium transition-colors ${
+              className={`group relative text-sm font-medium transition-colors ${
                 scrolled
                   ? "text-ink/80 hover:text-gold-deep"
                   : "text-cream/85 hover:text-gold-light"
               }`}
             >
               {dict.nav.links[item]}
+              <span
+                className={`absolute -bottom-1 left-0 h-px w-0 transition-all duration-300 group-hover:w-full ${
+                  scrolled ? "bg-gold-deep" : "bg-gold-light"
+                }`}
+              />
             </a>
           ))}
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
           <LanguageToggle locale={locale} onChange={setLocale} scrolled={scrolled} />
-          <a
+          <motion.a
             href="#contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.96 }}
             className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
               scrolled
                 ? "bg-ink text-cream hover:bg-gold hover:text-ink"
@@ -57,7 +65,7 @@ export function Navbar() {
             }`}
           >
             {dict.nav.cta}
-          </a>
+          </motion.a>
         </div>
 
         <button

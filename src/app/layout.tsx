@@ -4,6 +4,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 const alegreya = Alegreya({
   variable: "--font-alegreya",
@@ -37,6 +38,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <LanguageProvider>
+          <ScrollProgress />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

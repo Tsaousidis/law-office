@@ -23,7 +23,7 @@ export function Logo({ variant = "default", className = "" }: LogoProps) {
       aria-label={dict.nav.brandFull}
     >
       <span
-        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-sm ${monogramBg} font-serif text-lg font-semibold ${monogramText} transition-transform duration-300 group-hover:scale-105`}
+        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-sm ${monogramBg} font-serif text-lg font-semibold ${monogramText} transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110`}
       >
         Π
       </span>
