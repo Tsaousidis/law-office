@@ -15,6 +15,74 @@
     },
     "cta": "Book a Consultation"
   },
+  "hero": {
+    "image": "/images/office-hero-bg.jpg",
+    "tagline": "Serious, hands-on support for every legal matter — with deep knowledge of civil law and a commitment to results."
+  },
+  "about": {
+    "kicker": "About Us",
+    "heading": "History & Philosophy",
+    "image": "/images/office-interior-photo.jpg",
+    "paragraphs": [
+      "Papadopoulos Law Office was founded in 2009 by Ioannis Papadopoulos, with the aim of providing high-level legal services in civil law. Over the years, the firm has handled hundreds of cases in contract, inheritance, and property law, building relationships of trust with individuals and families throughout Attica.",
+      "We believe every case is unique and deserves personal attention, clear communication, and realistic guidance — not vague promises. We combine deep knowledge of the legal framework with practical experience in Greek courts, so we can recommend the solution that truly serves our client's interests."
+    ],
+    "stats": [
+      { "value": "15+", "label": "Years of Experience" },
+      { "value": "500+", "label": "Cases Handled" },
+      { "value": "97%", "label": "Client Satisfaction" }
+    ]
+  },
+  "services": {
+    "kicker": "Services",
+    "heading": "Areas of Practice",
+    "intro": "We provide comprehensive legal coverage in civil law, tailored to each client's needs.",
+    "items": [
+      {
+        "title": "Civil Law",
+        "description": "Legal representation and advisory across all types of civil disputes, from negotiation through litigation, with a focus on protecting your interests."
+      },
+      {
+        "title": "Contract & Obligations Law",
+        "description": "Drafting, review, and enforcement of contracts, damages claims, and dispute resolution arising from contractual relationships, ensuring your transactions stand on solid legal ground."
+      },
+      {
+        "title": "Inheritance Law",
+        "description": "Acceptance of inheritance, estate distribution, wills, and resolution of inheritance disputes, handled with discretion and attention to each family's particular needs."
+      },
+      {
+        "title": "Real Estate Law",
+        "description": "Title due diligence, sale and lease agreements, and representation in property and real estate disputes."
+      },
+      {
+        "title": "Family Law",
+        "description": "Divorce, child custody, alimony, and property arrangements, approached with sensitivity during particularly difficult moments in your life."
+      }
+    ]
+  },
+  "team": {
+    "kicker": "Our Team",
+    "heading": "Meet the Team",
+    "members": [
+      {
+        "name": "Ioannis Papadopoulos",
+        "title": "Founder & Principal Attorney",
+        "bio": "A Supreme Court-admitted attorney with over 15 years of experience in civil law. A graduate of the Law School of the National and Kapodistrian University of Athens, with postgraduate studies in Civil Law. A member of the Athens Bar Association, he has represented individuals and businesses in complex contract and property law cases.",
+        "photo": "/images/ioannis-papadopoulos-photo.jpg"
+      },
+      {
+        "name": "Maria Georgiadou",
+        "title": "Associate Attorney",
+        "bio": "Specializes in inheritance and family law, with particular emphasis on mediation and out-of-court dispute resolution. A graduate of the Law School of Aristotle University of Thessaloniki, she combines legal precision with a human approach in every case she undertakes.",
+        "photo": "/images/maria-georgiadou-photo.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "Contact",
+    "heading": "Get in Touch",
+    "comingSoon": "The contact form will be added in Stage 4."
+  },
   "footer": {
     "tagline": "Responsible legal guidance, delivered with expertise and consistency, at every stage of your case.",
     "linksTitle": "Quick Links",
@@ -29,8 +97,5 @@
     "hours": "Monday – Friday: 09:00 – 17:00",
     "socialLabel": "Follow us",
     "rights": "All rights reserved."
-  },
-  "placeholder": {
-    "sectionNotice": "This section's content will be added in Stage 2."
   }
 }
